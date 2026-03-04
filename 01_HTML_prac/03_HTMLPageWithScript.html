@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        color: rgb(127, 113, 113);
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello World..!</h1>
+    <!-- 
+    script 태그의 위치에 따른 차이 
+    1. head에 작성할 경우
+    - HTML 파싱이 되던 중 스크립트 먼저 실행
+    -> DOM 요소가 생성되기 전에 실행돼 DOM 요소 조작 시 문제 생길 수 있음
+    
+    2. body에 작성할 경우
+    - HTML이 전부 파싱된 후 스크립트 실행
+    -> DOM 요소에 안전하게 접근 가능
+     -->
+    <script>
+      alert('Hello JavaScript ..!');
+    </script>
+  </body>
+</html>
