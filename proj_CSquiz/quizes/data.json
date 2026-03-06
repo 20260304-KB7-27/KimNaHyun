@@ -1,0 +1,32 @@
+{
+  "quizzes": [
+    {
+      "id": 1,
+      "question": "HTML의 약자는 무엇인가?",
+      "options": [
+        "Hyper Text Markup Language",
+        "High Text Machine Language",
+        "Hyperlink Text Management Language",
+        "Home Tool Markup Language"
+      ],
+      "answer": 0
+    },
+    {
+      "id": 2,
+      "question": "CSS는 무엇을 위한 언어인가?",
+      "options": [
+        "웹 서버 관리",
+        "웹 페이지 스타일 디자인",
+        "데이터베이스 관리",
+        "네트워크 설정"
+      ],
+      "answer": 1
+    },
+    {
+      "id": 3,
+      "question": "JavaScript는 주로 어디에서 실행되는가?",
+      "options": ["브라우저", "프린터", "모니터", "라우터"],
+      "answer": 0
+    }
+  ]
+}
