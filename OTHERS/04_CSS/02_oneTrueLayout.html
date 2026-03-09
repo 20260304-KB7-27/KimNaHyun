@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        width: 500px;
+        margin: 10px auto;
+      }
+
+      #top {
+        background-color: green;
+      }
+      #bottom {
+        background-color: purple;
+      }
+
+      #left {
+        background-color: yellow;
+        width: 200px;
+      }
+      #right {
+        background-color: blue;
+        width: 200px;
+      }
+      #middle {
+        display: flex;
+        /* flex : 요소들을 정렬하기 위한 레이아웃 방식
+
+        특징
+        - 부모요소에 display: flex 속성으로 플렉스 컨테이너 지정
+        - 자식 요소들을 원하는 형태로 정렬하는데 사용됨
+        */
+
+        /* space-between : 양쪽 끝 정렬 */
+        justify-content: space-between;
+        /* 
+        center: 가운데 정렬
+        flex-end: 오른쪽 정렬
+        space-around: 동일한 여백
+        space-evenly : 동일한 간격 
+        */
+
+        /* flex-direction: ; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="top">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
+        cupiditate! ...
+      </div>
+      <div id="middle">
+        <div id="left">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. dolore
+          architecto.
+        </div>
+        <div id="right">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. ...
+        </div>
+      </div>
+      <div id="bottom">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. ...
+      </div>
+    </div>
+  </body>
+</html>
