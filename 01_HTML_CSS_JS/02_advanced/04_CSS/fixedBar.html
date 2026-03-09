@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        margin-top: 50px;
+        margin-left: 50px;
+      }
+
+      /*
+      position fixed : 고정 레이아웃
+
+      특징
+      - 스크롤 내려도 화면의 특정 위치에 고정
+      - 일반적인 문서 흐름에서 제외되어 다른 요소들의 위치를 무시함
+      */
+
+      .top_bar {
+        background-color: red;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      .left_bar {
+        background-color: blue;
+        width: 50px;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top_bar"></div>
+    <div class="left_bar"></div>
+    <div class="container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <p>Proin ut quam feugiat, tincidunt dolor nec, iaculis dui.</p>
+      <p>Fusce elementum pretium diam vitae facilisis.</p>
+      <p>
+        Mauris non lobortis lectus.Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Necessitatibus reprehenderit, aliquam et error neque,
+        iste eveniet minus consequatur, labore aperiam odio aspernatur dolorem!
+        Aperiam tenetur temporibus earum quae eius. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Excepturi aliquid rem magnam voluptatem
+        quisquam ea asperiores quibusdam, ipsa cupiditate impedit eius sed
+        reiciendis commodi dolorum, eligendi blanditiis facere, labore
+        veritatis? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Itaque porro, officia, dolorem dolore nulla nesciunt quae quia ex
+        explicabo iusto repudiandae non ratione quasi sint accusantium, eligendi
+        nostrum illo! Iure ex nostrum eum repudiandae eos quisquam
+        necessitatibus voluptate illum perspiciatis impedit vel porro ab, beatae
+        quos corporis deleniti tempora. Dolorum corporis officia inventore
+        tempora ex nostrum est corrupti voluptatem laboriosam, pariatur, aperiam
+        nobis architecto molestiae, unde quasi sapiente voluptates dignissimos
+        natus asperiores. Ipsa assumenda eos accusamus error. Perspiciatis
+        voluptatibus, natus temporibus quae eligendi tempore nostrum rem vero,
+        repellat facere dolore obcaecati pariatur inventore, hic maxime modi
+        incidunt ratione fuga? Facilis?
+      </p>
+    </div>
+  </body>
+</html>
