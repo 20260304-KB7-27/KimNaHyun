@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      let value = 5;
+      let array = [10, 20, 30, 40, 50];
+      //   스택에 5가 저장되고, 힙에 array의 주소 저장
+      // array.메서드 할때 : 여기 arraa=y 주소 참고해서
+
+      console.log(array.length);
+      console.log(array[3]);
+
+      //   for (let i = 0; i < array.length; i++) {
+      //     alert(array[i]);
+      //   }
+
+      // for...of 반복문 : 배열의 요소를 직접 순회
+      //   let array = [10, 20, 30, 40, 50];
+
+      //   for (let value of array) {
+      //     alert(value);
+      //   }
+
+      //   for (let value in array) {
+      //     alert(value);
+      //   }
+
+      // forEach - 배열의 길이만큼 함수를 실행
+      // 배열의 각 요소를 콜백함수의 인자로 넘겨줄 수 있음
+      array.forEach(function 콜백함수(value) {
+        alert(value);
+      });
+    </script>
+  </head>
+
+  <body></body>
+</html>
