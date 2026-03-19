@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <h2>일반 메시지 : {{normalMessage}}</h2>
+        <h2>반응형 메시지 : {{message}}</h2>
+        <h2>현재 시간 : {{currentTime}}</h2>
+      </div>
+    </div>
+
+    <script>
+      const { createApp, ref, onMounted } = Vue;
+
+      createApp({
+        setup() {
+          // Composition 방식에서는 created()의 역할을 setup() 함수가 대신함.
+          const normalMessage = '일반 메시지 입니다. ';
+
+          // ref() : 반응형 데이터를 만들기 위한 래퍼 함수
+          const message = ref('안녕하세요 Vue!');
+          const currentTime = ref(new Date().toLocaleTimeString());
+
+          // 컴포넌트가 마운트 됐을 때
+          onMounted(() => {
+            setInterval(() => {
+              // ref로 래핑된 데이터에 접근하려면 .value 사용
+              this.currentTime = new Date().toLocaleTimeString;
+            }, 1000);
+          });
+
+          return {
+            message,
+            currentTime,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

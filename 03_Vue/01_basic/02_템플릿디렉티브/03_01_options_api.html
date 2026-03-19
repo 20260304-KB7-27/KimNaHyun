@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Options API</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <h2>일반 메시지 : {{normalMessage}}</h2>
+        <h2>반응형 메시지 : {{message}}</h2>
+        <h2>현재 시간 : {{currentTime}}</h2>
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      // Vue에서 조작하기 어려움.
+      let normalMessage = '일반 메시지 입니다.';
+
+      createApp({
+        // Vue 인스턴스가 생성된 직후에 동작하는 함수
+        // API 호출시 많이 사용
+        created() {
+          // this는 Vue 인스턴스
+          this.normalMessage = '일반메시지 입니다. ';
+        },
+
+        // 반응형 데이터 정의
+        data() {
+          return {
+            normalMessage: normalMessage,
+            message: '안녕하세요 Vue',
+            currentTime: new Date().toLocaleTimeString(),
+          };
+        },
+
+        // 컴포넌트가 실제 DOM 생성된 직후 호출 -> DOM 조작 가능
+        mounted() {
+          setInterval(() => {
+            // this를 통해 반응형 데이터(상태)에 접근 가능
+            this.currentTime = new Date().toLocaleTimeString();
+          }, 1000);
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

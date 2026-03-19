@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 기본 : v-bind:속성명 = "데이터" -->
+      <input type="text" v-bind:value="message" />
+      <!-- 축약 : :속성명 = "데이터" -->
+      <img :src="imgPath" alt="" />
+      <!-- 속성이 여러개인 경우 객체형식으로 전달 -->
+      <h1 v-bind="{class:h1Class, style:h1Style}">{{h1Text}}</h1>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      /*
+      v-bind 디렉티브
+      - HTML 요소의 속성과 Vue의 데이터를 연결해주는 디렉티브
+      */
+
+      createApp({
+        setup() {
+          // 반응형 변수
+          const message = ref('v-bind 디렉티브');
+          const imgPath = ref(
+            'https://www.hartz.com/wp-content/uploads/2022/04/small-dog-owners-1.jpg',
+          );
+
+          const h1Text = ref('v-bind 디렉티브');
+          const h1Class = ref('title-text');
+          const h1Style = ref({
+            color: 'blue',
+            fotntWeiht: 'bold',
+            textDecoration: 'underline',
+          });
+          return { h1Text, h1Class, h1Style, message, imgPath };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

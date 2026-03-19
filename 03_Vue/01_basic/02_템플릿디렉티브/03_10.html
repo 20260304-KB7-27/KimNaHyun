@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      예금액 : <input type="text" v-model="amount" />
+      <!-- 
+    v-if : 컴포넌트 조건부 표시  
+    - DOM에서 요소를 제거와 생성을 반복함.  
+    v-else-if
+    v-else 
+    
+    v-show : 컴포넌트 조건부 표시
+    - 보이지 않을 경우 display: nonde 스타일이 적용됨
+    - 자주 토글되는 요소에 더 효율적 (햄버거바)
+    
+    -->
+      <img
+        v-if="amount < 0"
+        src="https://contactsvc.bmaster.kro.kr/img/error.png"
+        title="마이너스는 허용하지 않습니다."
+        style="
+          width: 15px;
+          height: 15px;
+          padding-left: 10px;
+          vertical-align: middle;
+        "
+      />
+    </div>
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        setup() {
+          const amount = ref(0);
+          return {
+            amount,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

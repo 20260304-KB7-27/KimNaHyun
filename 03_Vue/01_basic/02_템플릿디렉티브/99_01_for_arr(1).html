@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 
+    v-for
+    문법 : v-for = "(value, key, index) in 객체"
+
+    주의
+    : key 속성을 필수적으로 등록!!
+    인덱스 값은 변할 수 있기 때문에 key로 사용하지 않는 것이 좋음.
+     -->
+    <div id="app">
+      <ul>
+        <li v-for="(value, key, index) in user" :key="key">
+          {{index}} => {{key}} : {{value}}
+        </li>
+      </ul>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        setup() {
+          const user = ref({ name: '영희', age: 20, city: '서울' });
+          return { user };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

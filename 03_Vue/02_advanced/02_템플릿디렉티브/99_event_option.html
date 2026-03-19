@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Options API</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+        v-on 디렉티브
+        문법 : v-on:이벤트명="이벤트핸들러함수"
+        축약 : @이벤트명 = "이벤트핸들러함수"
+        -->
+      <button v-on:click="increaseCount()">클릭하세요 (기본버전)</button>
+      <button @click="increaseCount()">클릭하세요 (축약버전)</button>
+      <p>카운트 : {{count}}</p>
+    </div>
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        // 반응형데이터
+        data() {
+          return {
+            count: 0,
+          };
+        },
+        // 핸들러, 메서드
+        methods: {
+          increaseCount() {
+            this.count++;
+          },
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

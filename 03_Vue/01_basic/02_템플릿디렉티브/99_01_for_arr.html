@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <!-- 
+    v-for
+    문법 : v-for = "(item, index) in 배열"
+
+    주의
+    : key 속성을 필수적으로 등록!!
+    인덱스 값은 변할 수 있기 때문에 key로 사용하지 않는 것이 좋음.
+     -->
+    <div id="app">
+      <ul>
+        <li v-for="(fruit, index) in fruits">{{index}} : {{fruit}}</li>
+      </ul>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        setup() {
+          const fruits = ref(['사과', '배', '포도']);
+          return { fruits };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

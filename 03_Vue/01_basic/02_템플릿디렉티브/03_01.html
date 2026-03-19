@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Options API</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 데이터 바인딩 -->
+      <h2 v-text="message"></h2>
+      <h2>{{message}}</h2>
+    </div>
+
+    <script>
+      // 1. Vue 어플리케이션 인스턴스를 생성
+      // 2. 생성된 반응형 데이터를 템플릿에 바인딩
+      // 가상돔
+      // 1. mount 함수를 통해 앱을 마운트 -> 가상 DOM 생성
+      // 2. 브라우저에 가상 DOM 반영 -> 실제 DOM 생성
+      // 3. 반응형데이터(message)가 변경되면 Vue가 변경을 감지 -> 새로운 가상DOM 생성
+      // 4. Vue의 Diffing 알고리즘으로 새로 생성된 가상DOM과 기존 가상DOM을 비교
+      // 5. 변경된 부분만 실제 DOM 에 반영 (렌더링)
+
+      const { createApp } = Vue; // Vue를 꺼냈기에 Vue.createApp 안 해도 됨
+
+      const model = { message: 'Hello Vue3' };
+      const message = 'Hello Vue3!';
+
+      createApp({
+        // 반응형 데이터를 정의하는 곳
+        data() {
+          return model;
+        },
+        methods: {},
+      }).mount('#app');
+    </script>
+  </body>
+</html>

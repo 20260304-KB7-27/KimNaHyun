@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+        체크박스에서의 v-model
+        - true-value : 체크박스가 선택되었을 때 v-model에 바인딩 될 값
+        - false-value : 체크박스가 선택되지 않았을 때 v-model에 바인딩 될 값
+        -->
+      <input
+        type="checkbox"
+        v-model="agree"
+        true-value="yes"
+        false-value="no"
+      />
+      <div>선택된 값 : {{agree}}</div>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        setup() {
+          const agree = ref('no');
+          return { agree };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
