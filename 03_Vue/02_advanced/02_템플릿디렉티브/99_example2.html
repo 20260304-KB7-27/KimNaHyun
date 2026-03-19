@@ -19,7 +19,7 @@
         <div class="post-content" v-if="selectedPosts.includes(post)">
           <h3>{{post.title}}</h3>
           <p>{{post.content}}</p>
-          <button @click="closePost()">닫기</button>
+          <button @click="closePost(post)">닫기</button>
         </div>
       </ul>
     </div>
@@ -100,7 +100,7 @@
             }
             console.log(selectedPosts);
           }
-          function closePost() {
+          function closePost(post) {
             if (selectedPosts.value.includes(post)) {
               selectedPosts.value = selectedPosts.value.filter(
                 (p) => p.no !== post.no,
