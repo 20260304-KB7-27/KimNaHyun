@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+        이벤트 객체
+        - DOM에서 이벤트가 발생하면 브라우저가 이벤트와 관련된 정보를 담은 이벤트 객체를 생성
+         -->
+
+      <button @click="handleClick">클릭 (기본 이벤트 객체)</button>
+      <button @click="handleClickWithParam('안녕하세요!', $event)">
+        클릭 (인자 + $event)
+      </button>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+
+      createApp({
+        setup() {
+          const handleClick = (e) => {
+            // 템플릿에서 @click="handleClick"처럼 괄호 없이 호출하면
+            // 첫번째 매개변수로 이벤트 객체를 받을 수 있다.
+            console.log(`기본 이벤트 객체`);
+            console.log('이벤트 : ', e);
+            console.log('이벤트 타입 : ', e.type);
+            console.log('이벤트가 적용된 요소 : ', e.target);
+          };
+
+          const handleClickWithParam = (message, e) => {
+            console.log(`파라미터와 함께 전달된 이벤트 객체`);
+            console.log('전달받은 메시지 : ', message);
+            console.log('이벤트 타입 : ', e.type);
+            console.log('이벤트가 적용된 요소 : ', e.target);
+          };
+
+          return { handleClick, handleClickWithParam };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

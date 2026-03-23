@@ -37,7 +37,7 @@
 
           // 객체를 deep을 사용해서 감시할 경우 newVal, oldVal가 동일한 Proxy 객체를 참조함.
           watch(
-            () => ({ ...user }), // 객체를 복사해서
+            () => ({ ...user.value }), // 객체를 복사해서. 속성 변경되면 반응하게
             (newVal, oldVal) => {
               console.log(
                 `기존 사용자 : ${oldVal} -> 변경된 사용자 : ${newVal}`,

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- computed vs watch
+ computed : 정보
+watch : api 등 불러올 때 
+-->
+
+    <style>
+      .warning {
+        background-color: aqua;
+        color: purple;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>1부터 100까지만 입력 가능합니다.</div>
+      <div>
+        점수 :
+        <input type="text" , v-model.number="score" :class="info" />
+      </div>
+    </div>
+
+    <script>
+      const { createApp, ref, computed } = Vue;
+
+      createApp({
+        setup() {
+          const score = ref(0);
+          const info = computed(() => {
+            return { warning: score.value < 1 || score.value > 100 };
+          });
+          return { score, info };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
