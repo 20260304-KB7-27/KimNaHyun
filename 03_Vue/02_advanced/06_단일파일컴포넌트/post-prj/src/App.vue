@@ -1,14 +1,24 @@
 <template>
   <h1>📌 게시판 목록 v2</h1>
-  <InputPost />
+  <InputPost @add="addPost"></InputPost>
+  <PostList
+    :posts="posts"
+    :selectedPosts="selectedPosts"
+    :editingPost="editingPost"
+    @select-post="selectPost"
+    @save-edit="saveEdit"
+    @delete-post="deletePost"
+    @start-edit="startEdit"
+    @cancel-edit="cancelEdit"
+  ></PostList>
 </template>
 
 <script setup>
 import InputPost from './components/InputPost.vue';
+import PostList from './components/PostList.vue';
 import data from './data/data.json';
 
-const { ref } = Vue;
-let ts = new Date().getTime();
+import { ref } from 'vue';
 const posts = ref(data);
 
 const selectedPosts = ref([]);
@@ -22,33 +32,16 @@ function selectPost(post) {
   console.log(selectedPosts);
 }
 
-function closePost(post) {
-  if (selectedPosts.value.includes(post)) {
-    selectedPosts.value = selectedPosts.value.filter((p) => p.no !== post.no);
-  }
-  console.log(selectedPosts);
-}
-
 const nextNo = ref(Math.max(...data.map((p) => p.no), 0) + 1);
-const newPost = ref({
-  title: null,
-  content: null,
-});
 
-function addPost() {
-  if (!newPost.value.title || !newPost.value.content) {
-    alert('제목과 내용은 빈칸일 수 없습니다.');
-    return;
-  }
-
+function addPost(newPost) {
   posts.value.push({
     no: nextNo.value,
-    ...newPost.value,
+    ...newPost,
   });
 
+  console.log(posts);
   nextNo.value++;
-  newPost.value.title = null;
-  newPost.value.content = null;
 }
 
 function deletePost(no) {
