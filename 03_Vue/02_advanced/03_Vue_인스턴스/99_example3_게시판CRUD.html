@@ -15,27 +15,29 @@
         <button @click="addPost()">추가</button>
       </div>
       <ul v-for="post in posts" :key="post.no">
-        <li class="post-item" @click="selectPost(post)">
-          {{post.no}}. {{post.title}}
-          <span class="arrow" v-if="selectedPosts.includes(post)">▲</span
-          ><span class="arrow" v-else>▼</span>
-        </li>
+        <li>
+          <div class="post-item" @click="selectPost(post)">
+            {{post.no}}. {{post.title}}
+            <span class="arrow" v-if="selectedPosts.includes(post)">▲</span
+            ><span class="arrow" v-else>▼</span>
+          </div>
 
-        <div class="post-content" v-if="selectedPosts.includes(post)">
-          <div v-if="post.no !== editingPost.no">
-            <h3>{{post.title}}</h3>
-            <p>{{post.content}}</p>
-            <button @click="startEdit(post)">수정</button>
-            <button @click="deletePost(post.no)">삭제</button>
-            <button @click="closePost(post)">닫기</button>
+          <div class="post-content" v-if="selectedPosts.includes(post)">
+            <div v-if="post.no !== editingPost.no">
+              <h3>{{post.title}}</h3>
+              <p>{{post.content}}</p>
+              <button @click="startEdit(post)">수정</button>
+              <button @click="deletePost(post.no)">삭제</button>
+              <button @click="selectPost(post)">닫기</button>
+            </div>
+            <div v-else class="post-edit">
+              <input type="text" v-model="editingPost.title" />
+              <textarea v-model="editingPost.content"></textarea>
+              <button @click="saveEdit()">수정</button>
+              <button @click="cancelEdit()">취소</button>
+            </div>
           </div>
-          <div v-else class="post-edit">
-            <input type="text" v-model="editingPost.title" />
-            <textarea v-model="editingPost.content"></textarea>
-            <button @click="saveEdit()">수정</button>
-            <button @click="cancelEdit()">취소</button>
-          </div>
-        </div>
+        </li>
       </ul>
     </div>
 
@@ -121,15 +123,6 @@
             console.log(selectedPosts);
           }
 
-          function closePost(post) {
-            if (selectedPosts.value.includes(post)) {
-              selectedPosts.value = selectedPosts.value.filter(
-                (p) => p.no !== post.no,
-              );
-            }
-            console.log(selectedPosts);
-          }
-
           const nextNo = ref(11);
           const newPost = ref({
             title: null,
@@ -203,7 +196,6 @@
             posts,
             selectedPosts,
             selectPost,
-            closePost,
             newPost,
             addPost,
             deletePost,
