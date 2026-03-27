@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <button :style="[myColor, myLayout]">테스트</button>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        setup() {
+          const myColor = ref({
+            backgroundColor: 'purple',
+            color: 'yellow',
+          });
+          const myLayout = ref({
+            width: '150px',
+            height: '80px',
+            textAlign: 'center',
+          });
+
+          return {
+            myColor,
+            myLayout,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue 3 연습용 Composition</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <button
+          :style="{backgroundColor, color}"
+          @mouseover="overEvent"
+          @mouseout="outEvent"
+        >
+          테스트
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        setup() {
+          const backgroundColor = ref('aqua');
+          const color = ref('black');
+
+          const overEvent = () => {
+            // 스타일 변경
+            backgroundColor.value = 'purple';
+            color.value = 'yellow';
+          };
+          const outEvent = () => {
+            // 스타일 변경
+            backgroundColor.value = 'aqua';
+            color.value = 'black';
+          };
+
+          return {
+            backgroundColor,
+            color,
+            outEvent,
+            overEvent,
+          };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>
