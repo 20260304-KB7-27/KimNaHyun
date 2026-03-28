@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <BaseCard class="card-row">
+  <div class="card-row">
+    <BaseCard>
       <template #header> 사용자 프로필 </template>
       <!-- #default : template 없이 작성해도 기본 슬롯으로 들어감 -->
       <p><strong>이름 : </strong>홍길동</p>
@@ -32,5 +32,7 @@ import BaseCard from './components/example2/BaseCard.vue';
 .card-row {
   overflow: hidden;
   float: left;
+  display: flex;
+  gap: 20px;
 }
 </style>
