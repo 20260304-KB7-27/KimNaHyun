@@ -4,3 +4,15 @@
   background: red;
   text-align: center;
 }
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.text {
+  border: 1px solid black;
+  clear: both;
+}

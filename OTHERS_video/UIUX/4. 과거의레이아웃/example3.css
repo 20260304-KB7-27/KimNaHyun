@@ -1,0 +1,40 @@
+.christmastree {
+  position: relative;
+  border: 2px solid red;
+  font-weight: bold;
+}
+.tree {
+  display: inline-block;
+  width: auto;
+  height: 400px;
+}
+.m {
+  position: absolute;
+  top: 100px;
+  left: 110px;
+  background-color: yellow;
+}
+.e {
+  position: absolute;
+  top: 40px;
+  left: 190px;
+  background-color: yellow;
+}
+.r1 {
+  position: absolute;
+  top: 200px;
+  left: 190px;
+  background-color: yellow;
+}
+.r2 {
+  position: absolute;
+  top: 240px;
+  left: 270px;
+  background-color: yellow;
+}
+.y {
+  position: absolute;
+  top: 290px;
+  left: 50px;
+  background-color: yellow;
+}
