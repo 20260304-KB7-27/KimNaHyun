@@ -1,0 +1,3 @@
+package org.scoula.database.trevelapp
+
+rootProject.name = 'trevelapp'
