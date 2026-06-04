@@ -17,7 +17,7 @@ db.users.find();
 
 
 /*
-* updateOne() // updateMany()
+* updateOne() / updateMany()
 * - 조건에 맞는 첫 번째 문서를 수정
 * - db.컬렉션명.updateOne({조건}, {$set: {수정할 필드}})
 * */
@@ -111,6 +111,7 @@ db.users.find();
 * drop()
 * - 컬렉션을 삭제
 * */
+db.users.drop();
 db.users.drop();
 
 
