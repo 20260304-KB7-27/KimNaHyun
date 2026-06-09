@@ -26,3 +26,4 @@ db.members.insertMany([
     { name: "Henry",   age: 55, office: "busan",   phone: "010-1010-1010" },
     { name: "Irene",   age: 62, office: "seoul",   phone: "010-1212-1212" },
 ]);
+
