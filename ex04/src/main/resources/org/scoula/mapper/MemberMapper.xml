@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.scoula.member.mapper.MemberMapper">
+
+    <insert id="insert">
+        INSERT INTO tbl_member (username, password, email, birthYear)
+        VALUES (#{username}, #{password}, #{email}, #{birthYear})
+    </insert>
+
+    <select id="getList" resultType="org.scoula.member.domain.MemberVO">
+        SELECT no, username, password, email, birthYear, regDate, updatedDate
+        FROM tbl_member
+        ORDER BY no DESC
+    </select>
+
+    <select id="read" resultType="org.scoula.member.domain.MemberVO">
+        SELECT no, username, password, email, birthYear, regDate, updatedDate
+        FROM tbl_member
+        WHERE no = #{no}
+    </select>
+
+    <update id="update">
+        UPDATE tbl_member
+        SET password = #{password},
+            email = #{email},
+            birthYear = #{birthYear},
+            updatedDate = NOW()
+        WHERE no = #{no}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM tbl_member WHERE no = #{no}
+    </delete>
+
+</mapper>
