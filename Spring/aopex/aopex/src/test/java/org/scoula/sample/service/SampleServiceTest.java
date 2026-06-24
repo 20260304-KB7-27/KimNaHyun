@@ -20,7 +20,8 @@ class SampleServiceTest {
 
     @Test
     void doAdd() throws Exception {
-        log.info(service.doAdd("123", "123"));
+        service.doAdd("123", "123");
+
     }
 
 //    @Test

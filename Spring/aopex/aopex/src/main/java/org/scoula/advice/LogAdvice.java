@@ -18,6 +18,11 @@ public class LogAdvice {
     // Advice : Target에다가 적용시킬 동작들
 
     // Before Advice : 대상 메서드(Target) 실행 직전에 동작
+    @Before("execution(* org.scoula.sample.service.SampleService*.*(..))")
+    public void logBeforeAll() {
+        log.info("=======================================");
+    }
+
 
     // execution : Target을 지정하는 방법
     // execution([반환타입] [클래스풀네임].[메소드명])
@@ -32,38 +37,38 @@ public class LogAdvice {
     }
 
 
-    // *(..) : 해당 클래스의 모든 메서드, 모든 파라미터 적용
-    @AfterThrowing(value = "execution(* org.scoula.sample.service.SampleService*.*(..))"
-            , throwing = "exception"
-    )
-
-    public void logAfterThrowing(Exception exception){
-        log.info("🍟 AfterThrowing 동작합니다...!");
-        log.info("exception : {}", exception.getMessage());
-    }
-
-
-
-    @Around(value = "execution(* org.scoula.sample.service.SampleService*.*(..))")
-
-    public Object aroundTest(ProceedingJoinPoint pjp) throws Throwable {
-
-        long start = System.currentTimeMillis();
-        log.info("🍟 Around 동작합니다...!");
-        log.info("Target : {}", pjp.getTarget());
-
-        Object result = null;
-        // 실제 메소드 호출 필요
-        try{
-            result = pjp.proceed(); // 실제 Target 메소드 호출
-        }catch (Throwable e){
-            e.printStackTrace();
-        }
-
-        long end = System.currentTimeMillis();
-        log.info("실제 소요 시간 : " + (end-start));
-        return result;
-    }
+//    // *(..) : 해당 클래스의 모든 메서드, 모든 파라미터 적용
+//    @AfterThrowing(value = "execution(* org.scoula.sample.service.SampleService*.*(..))"
+//            , throwing = "exception"
+//    )
+//
+//    public void logAfterThrowing(Exception exception){
+//        log.info("🍟 AfterThrowing 동작합니다...!");
+//        log.info("exception : {}", exception.getMessage());
+//    }
+//
+//
+//
+//    @Around(value = "execution(* org.scoula.sample.service.SampleService*.*(..))")
+//
+//    public Object aroundTest(ProceedingJoinPoint pjp) throws Throwable {
+//
+//        long start = System.currentTimeMillis();
+//        log.info("🍟 Around 동작합니다...!");
+//        log.info("Target : {}", pjp.getTarget());
+//
+//        Object result = null;
+//        // 실제 메소드 호출 필요
+//        try{
+//            result = pjp.proceed(); // 실제 Target 메소드 호출
+//        }catch (Throwable e){
+//            e.printStackTrace();
+//        }
+//
+//        long end = System.currentTimeMillis();
+//        log.info("실제 소요 시간 : " + (end-start));
+//        return result;
+//    }
 
 
 
