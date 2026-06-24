@@ -2,6 +2,7 @@ package org.scoula.advice;
 
 
 import lombok.extern.log4j.Log4j2;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -45,10 +46,23 @@ public class LogAdvice {
 
     @Around(value = "execution(* org.scoula.sample.service.SampleService*.*(..))")
 
-    public void aroundTest(Exception exception){
-        log.info("🍟 Around 동작합니다...!");
+    public Object aroundTest(ProceedingJoinPoint pjp) throws Throwable {
 
+        long start = System.currentTimeMillis();
+        log.info("🍟 Around 동작합니다...!");
+        log.info("Target : {}", pjp.getTarget());
+
+        Object result = null;
         // 실제 메소드 호출 필요
+        try{
+            result = pjp.proceed(); // 실제 Target 메소드 호출
+        }catch (Throwable e){
+            e.printStackTrace();
+        }
+
+        long end = System.currentTimeMillis();
+        log.info("실제 소요 시간 : " + (end-start));
+        return result;
     }
 
 

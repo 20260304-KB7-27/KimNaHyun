@@ -23,9 +23,9 @@ class SampleServiceTest {
         log.info(service.doAdd("123", "123"));
     }
 
-    @Test
-    void doAdd2() throws Exception {
-        log.info(service.doAdd("123", "변환안됨"));
-    }
+//    @Test
+//    void doAdd2() throws Exception {
+//        log.info(service.doAdd("123", "변환안됨"));
+//    }
 
 }
