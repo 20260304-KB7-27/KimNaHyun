@@ -51,7 +51,7 @@ public class TestController {
     public MemberVO print4(@AuthenticationPrincipal CustomUser customUser){
         MemberVO memberVO = customUser.getMemberVO();
 
-        service.createBoard(customUser, body);
+//        service.createBoard(customUser, body);
 
         return memberVO;
     }
