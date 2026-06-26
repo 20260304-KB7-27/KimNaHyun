@@ -1,12 +1,17 @@
-package org.scoula.security;
+package org.scoula.security.config;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
@@ -19,7 +24,12 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @Configuration
 @EnableWebSecurity  // 필터체인 활성화
 @Log4j2
+@RequiredArgsConstructor
+@MapperScan(basePackages = {"org.scoula.security.account.mapper"})
+@ComponentScan(basePackages = {"org.scoula.security"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private final UserDetailsService userDetailsService;
 
     // 문자셋필터
     public CharacterEncodingFilter encodingFilter() {
@@ -64,17 +74,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     // 테스트용으로 메모리 상에 사용자 정보 등록 (임시 db)
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        // 관리자 계정
-        auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password("$2a$10$J9iXOVmvTiL26pkXgKnev.7UgRKly3Fidp9BjjLA5NZepZJ.NcJ4S")
-                .roles("ADMIN", "MEMBER");
+//        // 관리자 계정
+//        auth.inMemoryAuthentication()
+//                .withUser("admin")
+//                .password("$2a$10$J9iXOVmvTiL26pkXgKnev.7UgRKly3Fidp9BjjLA5NZepZJ.NcJ4S")
+//                .roles("ADMIN", "MEMBER");
+//
+//        // 일반 회원
+//        auth.inMemoryAuthentication()
+//                .withUser("member")
+//                .password("{noop}1234")
+//                .roles("MEMBER");
 
-        // 일반 회원
-        auth.inMemoryAuthentication()
-                .withUser("member")
-                .password("{noop}1234")
-                .roles("MEMBER");
+
+        auth.userDetailsService(userDetailsService) // userDetailService
+            .passwordEncoder(passwordEncoder());
+
 
     }
 
