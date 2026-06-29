@@ -16,12 +16,15 @@ import static org.junit.jupiter.api.Assertions.*;
 @ContextConfiguration(classes = {RootConfig.class, SecurityConfig.class})
 @Log4j2
 class UserDetailsMapperTest {
+
     @Autowired
     private UserDetailsMapper mapper;
 
     @Test
     void get() {
+
         MemberVO memberVO = mapper.get("admin");
+
         log.info(memberVO);
     }
 }

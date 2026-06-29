@@ -19,41 +19,52 @@ import java.security.Principal;
 @RequestMapping("/member")
 public class TestController {
 
+    @GetMapping
+    public String test(){
+        return "CORS Problem Test";
+    }
+
     /*
     * 인증 객체를 꺼내는 방법
     * 1. principal : username만 꺼낼 수 있음
-    * 2. Authentication : 권한, 인증상태 Security 정보가 필요할 때 (UserDetail로 형변환 필요)
-    * 3. @AutenticationPrincipal : CustomUser에 바로 접근 가능
+    * 2. Authentication : 권한,인증상태 Security 정보가 필요할때 (UserDetail로 형변환필요)
+    * 3. @AuthenticationPrincipal : CustomUser에 바로 접근 가능
     * */
 
     // Principal
     @GetMapping("/1")
     public String print1(Principal principal) {
+
         return principal.getName();
     }
 
     // Authentication
     @GetMapping("/2")
-    public String print2(Authentication authentication){
+    public String print2(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         return userDetails.getUsername();
     }
 
-    // @AuthenticationPrincipal
+    // @AuthenticationPrinpal
     @GetMapping("/3")
-    public MemberVO print3(@AuthenticationPrincipal CustomUser customUser){
+    public MemberVO print3(@AuthenticationPrincipal CustomUser customUser) {
         MemberVO memberVO = customUser.getMemberVO();
+
         return memberVO;
     }
 
     // Post 요청으로 오고 게시글 생성이다
     @PostMapping("/board")
-    public MemberVO print4(@AuthenticationPrincipal CustomUser customUser){
+    public MemberVO print4(@AuthenticationPrincipal CustomUser customUser) {
         MemberVO memberVO = customUser.getMemberVO();
 
 //        service.createBoard(customUser, body);
 
         return memberVO;
     }
+
+
+
+
 
 }
