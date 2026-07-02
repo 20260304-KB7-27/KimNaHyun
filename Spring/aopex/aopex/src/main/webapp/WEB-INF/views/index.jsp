@@ -1,0 +1,73 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello WebSocket</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+</head>
+<body>
+<div id="main-content" class="container">
+    <h2>KB-27  🐱‍👤Wifi : 605#01 채팅방</h2>
+    <h2>URL :  http://localhost:8080/ </h2>
+    <h4>말 이쁘게 채팅하기👍</h4>
+    <h4>험한말 ❌</h4>
+
+    <hr/>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>웹소켓 연결 및 방 선택</h3>
+            <form class="form-inline">
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label for="name" style="width: 80px;">이름: </label>
+                    <input type="text" id="name" class="form-control" placeholder="이름을 입력하세요.">
+                </div>
+                <br/>
+                <div class="form-group">
+                    <label for="roomId" style="width: 80px;">대화방 ID: </label>
+                    <input type="text" id="roomId" class="form-control" placeholder="방 번호(예: room1) 입력">
+
+                    <button id="connect" class="btn btn-default" type="submit">연결</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">끊기</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <h3>특정 대화방 내에서 대화하기</h3>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="content">메시지:</label>
+                    <input type="text" id="content" class="form-control" placeholder="메시지를 입력하세요...">
+                    <button id="send" class="btn btn-default" type="submit">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>채팅 메시지 목록</th>
+                </tr>
+                </thead>
+                <tbody id="chat-messages">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="/resources/js/stomp.js"></script>
+</body>
+</html>
