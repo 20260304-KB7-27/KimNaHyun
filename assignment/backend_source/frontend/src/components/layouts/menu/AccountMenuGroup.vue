@@ -5,7 +5,9 @@ import MenuItem from "./MenuItem.vue";
 import AccountMenuItem from "./AccountMenuItem.vue";
 import LogoutMenuItem from "./LogoutMenuItem.vue";
 import config from "@/config";  // 폴더를 import하면 index.js를 가져옴
+import { useAuthStore } from "@/stores/auth.js";
 
+const auth = useAuthStore();
 const { login, join } = config.accountMenus;
 
 const islogin = computed(() => {

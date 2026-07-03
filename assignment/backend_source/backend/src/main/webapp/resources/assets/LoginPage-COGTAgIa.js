@@ -1,0 +1,1 @@
+import{c as e,o as t,t as n}from"./index-BIAOHrPX.js";var r={};function i(n,r){return e(),t(`h1`,null,`로그인페이지`)}var a=n(r,[[`render`,i]]);export{a as default};
