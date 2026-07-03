@@ -45,6 +45,8 @@ export const useAuthStore = defineStore('auth', () => {
     state.value = { ...initState }; // 상태 초기화
   };
 
+  const getToken = () => state.value.token;
+
   // 스토어 초기화시 상태 복원
   load();
 
@@ -55,5 +57,6 @@ export const useAuthStore = defineStore('auth', () => {
       email,
       login,
       logout,
-  };
+      getToken,
+    };
 });

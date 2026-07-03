@@ -1,0 +1,1 @@
+import{g as e,s as t}from"./runtime-core.esm-bundler-DEXeagNA.js";import{n}from"./index-G-9snDVu.js";var r={};function i(n,r){return e(),t(`h1`,null,`여행 리스트 페이지`)}var a=n(r,[[`render`,i]]);export{a as default};

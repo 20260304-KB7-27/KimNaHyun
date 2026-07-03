@@ -11,11 +11,11 @@ const auth = useAuthStore();
 const { login, join } = config.accountMenus;
 
 const islogin = computed(() => {
-  false;
+  return auth.isLogin; 
 });
 
 const username = computed(() => {
-  return "null";
+  return auth.username;
 });
 </script>
 
