@@ -1,11 +1,12 @@
-package org.scoula.board.controller.pagenation;
+package org.scoula.board.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.dto.BoardDTO;
 import org.scoula.board.service.BoardService;
-import org.scoula.common.Page;
+import org.scoula.common.pagination.PageRequest;
+import org.scoula.common.pagination.Page;
 import org.scoula.utils.UploadFiles;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +31,8 @@ public class BoardController {
 //    }
 
     @GetMapping("")
-    public ResponseEntity<Page> getList() {
-        return ResponseEntity.ok();
+    public ResponseEntity<Page> getList(PageRequest pageRequest) {
+        return ResponseEntity.ok(service.get(pageRequest));
     }
 
 

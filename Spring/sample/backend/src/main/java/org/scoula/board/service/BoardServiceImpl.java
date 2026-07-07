@@ -6,6 +6,8 @@ import org.scoula.board.domain.BoardAttachmentVO;
 import org.scoula.board.domain.BoardVO;
 import org.scoula.board.dto.BoardDTO;
 import org.scoula.board.mapper.BoardMapper;
+import org.scoula.common.pagination.Page;
+import org.scoula.common.pagination.PageRequest;
 import org.scoula.utils.UploadFiles;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -116,6 +118,15 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public boolean deleteAttachment(Long no) {
         return boardMapper.deleteAttachment(no) == 1;
+    }
+
+    @Override
+    public Page getPage(PageRequest pageRequest){
+
+        // 1. 페이징 된 게시글 조회
+        List<BoardVO> boards = boardMapper.getPage(pageRequest);
+
+        return null;
     }
 
 
